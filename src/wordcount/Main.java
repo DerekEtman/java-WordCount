@@ -1,6 +1,8 @@
 package wordcount;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class Main
@@ -41,12 +43,29 @@ public class Main
 
 
         System.out.println();
-        System.out.println(wordHashMap);
-        
+        // System.out.println(wordHashMap);
+
+        // HashMaps cant be ordered
+        // So we're creating a new array from the hashmap
+        ArrayList<HashMap.Entry<String, Integer>> sortMap = new ArrayList<HashMap.Entry<String, Integer>>();
+        // Adding the data sets from wordHash
+        sortMap.addAll(wordHashMap.entrySet());
 
 
-        
-        
-        
+        Collections.sort(sortMap, new Comparator<HashMap.Entry<String, Integer>>() 
+        {
+            public int compare(HashMap.Entry<String, Integer> o1, HashMap.Entry<String, Integer> o2)
+            {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        System.out.println("*** TOP WORDS ***");
+        System.out.println();
+
+            for ( int i = 0; i < 50; i++)
+            {
+            System.out.println("#" + i + " Word: " + sortMap.get(i).getKey() + ". value: " + sortMap.get(i).getValue());
+            }   
+            System.out.println();
     }
 }
