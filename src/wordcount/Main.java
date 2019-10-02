@@ -64,7 +64,7 @@ public class Main
 
             for ( int i = 0; i < 50; i++)
             {
-            System.out.println("#" + i + " Word: " + sortMap.get(i).getKey() + ". value: " + sortMap.get(i).getValue());
+            System.out.println("#" + i + " Word: " + sortMap.get(i).getKey() + "\n Times used in text body: " + sortMap.get(i).getValue());
             }   
             System.out.println();
     }
